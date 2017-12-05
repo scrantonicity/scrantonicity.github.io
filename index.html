@@ -395,10 +395,12 @@ function showButtons(style) {
 ///////////////////////////////////////
 $(document).keydown(function(e) {
 	if (e.key=="v") {
+		console.log("v");
 		e.preventDefault();
 		runVoice(final_transcript);
 	}
 	if (e.key=="b") {
+		console.log("b");
 		e.preventDefault();
 		final_transcript = "";
 	}
