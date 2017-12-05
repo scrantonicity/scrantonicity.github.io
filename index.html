@@ -298,7 +298,6 @@ if (!('webkitSpeechRecognition' in window)) {
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
-    runVoice(final_transcript)
   };
 }
 
@@ -393,6 +392,15 @@ function showButtons(style) {
   email_info.style.display = 'none';
 }
 ///////////////////////////////////////
+$(document).keydown(function(e) {
+		if (e.key=="space") {
+			runVoice(final_transcript);
+		}
+		if (e.key=="b") {
+			final_transcript = "";
+		}
+});
+
 function runVoice(phrase) {
 	if (validWord(phrase)) {
 		performAction(phrase)
