@@ -82,7 +82,7 @@
     padding: 0;
   }
 </style>
-
+<body>
 <a href="https://78.media.tumblr.com/72a7f0a2ca11e1d1fe5fb5ec24ba053c/tumblr_oytyce4Y2S1uk9x9no6_250.gif">Button</a>
 
 <img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif">
@@ -142,6 +142,7 @@
 </div>
 
 <img href="https://78.media.tumblr.com/c4b064cdf999822b84a93cdd9d95e4af/tumblr_ohfvxwRKAw1qfcx4to4_r1_540.gif">
+</body>
 
 <script>
 ////////Copied from Google////////////
@@ -440,6 +441,7 @@ function performAction(phrase) {
 
 function performClick(phrase) {
 	$("input,a").each(function(i,val) {
+		console.log(val)
 		console.log(val.innerHTML)
 	    if (phrase.includes(val.innerHTML) && val.innerHTML!=" ") {
 	    	console.log("Clicking: "+val.innerHTML)
