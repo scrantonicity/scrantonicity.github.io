@@ -420,7 +420,7 @@ function performAction(phrase) {
 }
 
 function performClick(phrase) {
-	$(“input,a”).each(function(i,val) {
+	$("input,a").each(function(i,val) {
 		console.log(val)
 	    if (phrase.includes(val.name)) {
 	    	click(val)
