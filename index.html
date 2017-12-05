@@ -444,7 +444,7 @@ function performClick(phrase) {
 	$("input,a").each(function(i,val) {
 		console.log(val)
 		console.log(val.innerHTML.toLowerCase())
-	    if (phrase.includes(val.innerHTML.toLowerCase();)) {
+	    if (phrase.includes(val.innerHTML.toLowerCase())) {
 	    	console.log("Clicking: "+val.innerHTML.toLowerCase();)
 	    	simulateClick(val)
 	    }
