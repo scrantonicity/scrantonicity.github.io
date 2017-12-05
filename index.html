@@ -413,6 +413,7 @@ $(document).keydown(function(e) {
 	}
 });
 function runVoice(phrase) {
+	phrase = phrase.toLowerCase();
 	console.log(phrase);
 	if (validWord(phrase)) {
 		performAction(phrase)
@@ -422,7 +423,7 @@ function runVoice(phrase) {
 }
 
 function validWord(phrase) {
-	if (phrase.includes("Click") || phrase.includes("Enter") || phrase.includes("Scroll")) {
+	if (phrase.includes("click") || phrase.includes("enter") || phrase.includes("scroll")) {
 		return true
 	} else {
 		return false
@@ -430,11 +431,11 @@ function validWord(phrase) {
 }
 
 function performAction(phrase) {
-	if (phrase.includes("Click")) {
+	if (phrase.includes("click")) {
 		performClick(phrase)
-	} else if (phrase.includes("Enter")) {
+	} else if (phrase.includes("enter")) {
 		performEnter(phrase)
-	} else if (phrase.includes("Scroll")) {
+	} else if (phrase.includes("scroll")) {
 		performScroll(phrase)
 	}
 }
@@ -443,9 +444,9 @@ function performClick(phrase) {
 	$("input,a").each(function(i,val) {
 		console.log(val)
 		console.log(val.innerHTML)
-	    if (phrase.includes(val.innerHTML) && val.innerHTML!=" ") {
+	    if (phrase.includes(val.innerHTML)) {
 	    	console.log("Clicking: "+val.innerHTML)
-	    	// simulateClick(val)
+	    	simulateClick(val)
 	    }
 	});
 }
