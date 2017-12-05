@@ -442,7 +442,9 @@ function performClick(phrase) {
 	$("input,a").each(function(i,val) {
 		console.log(val)
 	    if (phrase.includes(val.name)) {
-	    	simulateClick(val)
+	    	console.log(val.name)
+	    	console.log(phrase)
+	    	// simulateClick(val)
 	    }
 	});
 }
