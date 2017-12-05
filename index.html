@@ -200,14 +200,10 @@ var langs =
                      ['yue-Hant-HK', '粵語 (香港)']],
  ['日本語',           ['ja-JP']],
  ['Lingua latīna',   ['la']]];
-
-for (var i = 0; i < langs.length; i++) {
-  select_language.options[i] = new Option(langs[i][0], i);
-}
-select_language.selectedIndex = 6;
-updateCountry();
-select_dialect.selectedIndex = 6;
-showInfo('info_start');
+var create_email = false;
+var final_transcript = '';
+var recognizing = false;
+var ignore_onend;
 
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
@@ -219,12 +215,14 @@ function updateCountry() {
   }
   select_dialect.style.visibility = list[1].length == 1 ? 'hidden' : 'visible';
 }
-
-var create_email = false;
-var final_transcript = '';
-var recognizing = false;
-var ignore_onend;
+select_language.selectedIndex = 6;
+updateCountry();
+select_dialect.selectedIndex = 6;
+showInfo('info_start');
 var start_timestamp;
+for (var i = 0; i < langs.length; i++) {
+  select_language.options[i] = new Option(langs[i][0], i);
+}
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
@@ -393,12 +391,12 @@ function showButtons(style) {
 }
 ///////////////////////////////////////
 $(document).keydown(function(e) {
-		if (e.key=="space") {
-			runVoice(final_transcript);
-		}
-		if (e.key=="b") {
-			final_transcript = "";
-		}
+	if (e.key=="space") {
+		runVoice(final_transcript);
+	}
+	if (e.key=="b") {
+		final_transcript = "";
+	}
 });
 
 function runVoice(phrase) {
