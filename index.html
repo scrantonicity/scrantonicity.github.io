@@ -84,8 +84,10 @@
 </style>
 <body>
 <a href="https://78.media.tumblr.com/72a7f0a2ca11e1d1fe5fb5ec24ba053c/tumblr_oytyce4Y2S1uk9x9no6_250.gif">Button</a>
+<p>What do you call a cow with no legs?</p>
+<input type="text" name="cow pun"></input>
 
-<img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif">
+<img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif"></img>
 
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
@@ -141,7 +143,9 @@
   </div>
 </div>
 
-<img href="https://78.media.tumblr.com/c4b064cdf999822b84a93cdd9d95e4af/tumblr_ohfvxwRKAw1qfcx4to4_r1_540.gif">
+<img href="https://78.media.tumblr.com/640989ec414fc4ab3a8dccadcd7f2d42/tumblr_ovmi2cnVSD1w2nfzio1_500.png"></img>
+
+<img href="https://78.media.tumblr.com/c4b064cdf999822b84a93cdd9d95e4af/tumblr_ohfvxwRKAw1qfcx4to4_r1_540.gif"></img>
 </body>
 
 <script>
@@ -452,13 +456,17 @@ function performClick(phrase) {
 }
 
 function performEnter(phrase) {
-
+	if ($(lastfocus).is("input[type='text'],textarea")) {
+		lastfocus.value = phrase.substring(5,phrase.length())
+	}
 }
 
 function performScroll(phrase) {
 	if (phrase.includes("up")) {
+		console.log("scrolling up");
 		window.scrollBy(0,-100)
 	} else if (phrase.includes("down")) {
+		console.log("scrolling down");
 		window.scrollBy(0,100)
 	}
 }
