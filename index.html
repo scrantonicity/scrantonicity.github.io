@@ -458,51 +458,14 @@ function performScroll(phrase) {
 		window.scrollBy(0,100)
 	}
 }
-
+var lastfocus
 function simulateClick(element) {
 	console.log(element)
 	if (!element) return;
 	if ($(element).is("input[type='text'],textarea")) {
 		lastfocus = element;
 		$(element).focus();
-		$(".keyboard").show();
 	} 
-	if ($(lastfocus).is("input[type='text'],textarea")) {
-		console.log($(element).attr("class") == null)
-		if ((!$(element).is("input[type='text'],textarea") && $(element).attr("class") == null) || 
-			!$(element).attr("class").toString().includes("key")) {
-			$(lastfocus).blur();
-			$(".keyboard").hide();
-		} else if ($(element).attr("class") == "key caps" ||
-			$(element).attr("class").includes("key shift")) {
-			toggleCapsLock();
-			if ($(element).attr("class").includes("key shift")) {
-				shift = "on";
-			}
-		} else if ($(element).attr("class") == "key backspace") {
-			$(lastfocus).val($(lastfocus).val().slice(0,-1));
-		} else {
-			var newchar;
-			if ($(element).attr("class").includes("letter")) {
-				newchar = $(element).text().trim().toLowerCase();
-				if (capslock == "on") {
-					newchar = newchar.toUpperCase();
-				}
-			} else {
-				if (capslock == "on") {
-					newchar = $(element).text().trim().charAt(0);
-				} else {
-					newchar = $(element).text().trim().slice(-1);
-				}
-			}
-			$(lastfocus).val($(lastfocus).val()+newchar);
-			if (shift == "on") {
-				toggleCapsLock();
-				shift = "off";
-			}
-		}
-
-	}
 	var dispatchEvent = function (elt, name) {
 	    var clickEvent = document.createEvent('MouseEvents');
 	    clickEvent.initEvent(name, true, true);
