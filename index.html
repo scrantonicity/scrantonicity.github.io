@@ -428,7 +428,7 @@ function runVoice(phrase) {
 }
 
 function validWord(phrase) {
-	if (phrase.includes("click") || phrase.includes("enter") || phrase.includes("scroll")) {
+	if (phrase.includes("click") || phrase.includes("type") || phrase.includes("scroll")) {
 		return true
 	} else {
 		return false
@@ -438,7 +438,7 @@ function validWord(phrase) {
 function performAction(phrase) {
 	if (phrase.includes("click")) {
 		performClick(phrase)
-	} else if (phrase.includes("enter")) {
+	} else if (phrase.includes("type")) {
 		performEnter(phrase)
 	} else if (phrase.includes("scroll")) {
 		performScroll(phrase)
