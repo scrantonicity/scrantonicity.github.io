@@ -84,6 +84,9 @@
 </style>
 
 <button onclick = "alert('I Was Clicked!'')">Pam</button>
+
+<img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif">
+
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
     Web Speech API</a> Demonstration</h1>
@@ -137,6 +140,9 @@
     <select id="select_dialect"></select>
   </div>
 </div>
+
+<img href="https://78.media.tumblr.com/c4b064cdf999822b84a93cdd9d95e4af/tumblr_ohfvxwRKAw1qfcx4to4_r1_540.gif">
+
 <script>
 ////////Copied from Google////////////
 var langs =
@@ -436,10 +442,77 @@ function performClick(phrase) {
 	$("input,a").each(function(i,val) {
 		console.log(val)
 	    if (phrase.includes(val.name)) {
-	    	click(val)
+	    	simulateClick(val)
 	    }
 	});
 }
+
+function performEnter(phrase) {
+
+}
+
+function performScroll(phrase) {
+	if (phrase.includes("up")) {
+		window.scrollBy(0,-100)
+	} else if (phrase.includes("down")) {
+		window.scrollBy(0,100)
+	}
+}
+
+function simulateClick(element) {
+	console.log(element)
+	if (!element) return;
+	if ($(element).is("input[type='text'],textarea")) {
+		lastfocus = element;
+		$(element).focus();
+		$(".keyboard").show();
+	} 
+	if ($(lastfocus).is("input[type='text'],textarea")) {
+		console.log($(element).attr("class") == null)
+		if ((!$(element).is("input[type='text'],textarea") && $(element).attr("class") == null) || 
+			!$(element).attr("class").toString().includes("key")) {
+			$(lastfocus).blur();
+			$(".keyboard").hide();
+		} else if ($(element).attr("class") == "key caps" ||
+			$(element).attr("class").includes("key shift")) {
+			toggleCapsLock();
+			if ($(element).attr("class").includes("key shift")) {
+				shift = "on";
+			}
+		} else if ($(element).attr("class") == "key backspace") {
+			$(lastfocus).val($(lastfocus).val().slice(0,-1));
+		} else {
+			var newchar;
+			if ($(element).attr("class").includes("letter")) {
+				newchar = $(element).text().trim().toLowerCase();
+				if (capslock == "on") {
+					newchar = newchar.toUpperCase();
+				}
+			} else {
+				if (capslock == "on") {
+					newchar = $(element).text().trim().charAt(0);
+				} else {
+					newchar = $(element).text().trim().slice(-1);
+				}
+			}
+			$(lastfocus).val($(lastfocus).val()+newchar);
+			if (shift == "on") {
+				toggleCapsLock();
+				shift = "off";
+			}
+		}
+
+	}
+	var dispatchEvent = function (elt, name) {
+	    var clickEvent = document.createEvent('MouseEvents');
+	    clickEvent.initEvent(name, true, true);
+	    elt.dispatchEvent(clickEvent);
+	};
+	dispatchEvent(element, 'mouseover');
+	dispatchEvent(element, 'mousedown');
+	dispatchEvent(element, 'click');
+	dispatchEvent(element, 'mouseup');
+};
 
 
 
