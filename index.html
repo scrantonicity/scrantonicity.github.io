@@ -440,9 +440,8 @@ function performAction(phrase) {
 
 function performClick(phrase) {
 	$("input,a").each(function(i,val) {
-		console.log(val)
-	    if (phrase.includes(val.text())) {
-	    	console.log(val.text())
+	    if (phrase.includes(val.innerHTML) {
+	    	console.log(val.innerHTML)
 	    	console.log(phrase)
 	    	// simulateClick(val)
 	    }
