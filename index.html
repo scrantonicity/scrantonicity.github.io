@@ -414,6 +414,7 @@ $(document).keydown(function(e) {
 		console.log("b");
 		e.preventDefault();
 		final_transcript = "";
+		final_span.innerHTML = linebreak(final_transcript);
 	}
 });
 function runVoice(phrase) {
