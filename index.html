@@ -395,13 +395,16 @@ function showButtons(style) {
 ///////////////////////////////////////
 $(document).keydown(function(e) {
 	if (e.key=="space") {
+		e.preventDefault();
 		runVoice(final_transcript);
 	}
 	if (e.key=="b") {
+		e.preventDefault();
 		final_transcript = "";
 	}
 });
 function runVoice(phrase) {
+	console.log(phrase);
 	if (validWord(phrase)) {
 		performAction(phrase)
 	} else {
