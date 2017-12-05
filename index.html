@@ -83,7 +83,7 @@
   }
 </style>
 
-<button onclick = "alert('I Was Clicked!'')">Button</button>
+<input type="button" onclick = "alert('I Was Clicked!'')">Button</input>
 
 <img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif">
 
@@ -439,7 +439,6 @@ function performAction(phrase) {
 }
 
 function performClick(phrase) {
-	console.log(phrase)
 	$("input,a").each(function(i,val) {
 		console.log(val.innerHTML)
 	    if (phrase.includes(val.innerHTML)) {
