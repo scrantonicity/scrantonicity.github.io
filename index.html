@@ -80,6 +80,8 @@
     padding: 0;
   }
 </style>
+
+<button onclick = "alert('I Was Clicked!'')">CLICK ME</button>
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
     Web Speech API</a> Demonstration</h1>
@@ -134,6 +136,7 @@
   </div>
 </div>
 <script>
+////////Copied from Google////////////
 var langs =
 [['Afrikaans',       ['af-ZA']],
  ['Bahasa Indonesia',['id-ID']],
@@ -295,6 +298,7 @@ if (!('webkitSpeechRecognition' in window)) {
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
+    runVoice(final_transcript)
   };
 }
 
@@ -388,4 +392,42 @@ function showButtons(style) {
   copy_info.style.display = 'none';
   email_info.style.display = 'none';
 }
+///////////////////////////////////////
+function runVoice(phrase) {
+	if (validWord(phrase)) {
+		performAction(phrase)
+	} else {
+		alert('Not a valid action')
+	}
+}
+
+function validWord(phrase)
+	if (phrase.includes("Click") || phrase.includes("Enter") || phrase.includes("Scroll")) {
+		return true
+	} else {
+		return false
+	}
+}
+
+function performAction(phrase) {
+	if (phrase.indludes("Click")) {
+		performClick(phrase)
+	} else if (phrase.includes("Enter")) {
+		performEnter(phrase)
+	} else if (phrase.includes("Scroll")) {
+		performScroll(phrase)
+	}
+}
+
+function performClick(phrase) {
+	$(“input,a”).each(function(i,val) {
+		console.log(val)
+	    if (phrase.includes(val.name)) {
+	    	click(val)
+	    }
+	});
+}
+
+
+
 </script>
