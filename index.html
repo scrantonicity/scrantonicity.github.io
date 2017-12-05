@@ -83,7 +83,7 @@
   }
 </style>
 
-<input type="button" onclick = "alert('I Was Clicked!'')">Button</input>
+<a href="https://78.media.tumblr.com/72a7f0a2ca11e1d1fe5fb5ec24ba053c/tumblr_oytyce4Y2S1uk9x9no6_250.gif">Button</a>
 
 <img href="https://78.media.tumblr.com/1646bb7d335f87431acc7ac72f670d3c/tumblr_ohfvxwRKAw1qfcx4to3_r1_540.gif">
 
@@ -441,7 +441,7 @@ function performAction(phrase) {
 function performClick(phrase) {
 	$("input,a").each(function(i,val) {
 		console.log(val.innerHTML)
-	    if (phrase.includes(val.innerHTML)) {
+	    if (phrase.includes(val.innerHTML) && val.innerHTML!=" ") {
 	    	console.log("Clicking: "+val.innerHTML)
 	    	// simulateClick(val)
 	    }
