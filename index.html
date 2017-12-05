@@ -83,7 +83,7 @@
   }
 </style>
 
-<button onclick = "alert('I Was Clicked!'')">CLICK ME</button>
+<button onclick = "alert('I Was Clicked!'')">Pam</button>
 <h1 class="center" id="headline">
   <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
     Web Speech API</a> Demonstration</h1>
@@ -423,7 +423,7 @@ function validWord(phrase) {
 }
 
 function performAction(phrase) {
-	if (phrase.indludes("Click")) {
+	if (phrase.includes("Click")) {
 		performClick(phrase)
 	} else if (phrase.includes("Enter")) {
 		performEnter(phrase)
